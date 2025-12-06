@@ -157,4 +157,8 @@ body {
   box-shadow: none;
   outline: none;
 }
+.sidebar-toggle i {
+  color: #1a1a1a ;
+}
+
 
