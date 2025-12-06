@@ -79,18 +79,19 @@ body {
   color: #fff;
 }
 
-.back-link {
-  display: inline-block;
-  margin: 20px;
-  font-size: 18px;
-  color: #333;
-  text-decoration: none;
-  transition: color 0.3s ease;
+.product-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
-.back-link:hover {
-  color: #007bff;
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: black;
+  border-radius: 50%;
 }
+
 
 .sidebar {
   position: fixed;
@@ -139,44 +140,32 @@ body {
   cursor: pointer;
 }
 
-.product-img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-}
-
-/* Carousel */
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  background-color: black;
-  border-radius: 50%;
-}
 
 .login-card {
-      background: white;
-      padding: 35px;
-      border-radius: 18px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-    }
+  background: white;
+  padding: 35px;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
 
-    .login-input {
-      background: #f5f5f5 ;
-      border: none ;
-      padding: 14px;
-      border-radius: 10px;
-    }
+.login-input {
+  background: #f5f5f5 ;
+  border: none ;
+  padding: 14px;
+  border-radius: 10px;
+}
 
-    .login-input:focus {
-      box-shadow: none ;
-      background: #efefef ;
-    }
+.login-input:focus {
+  box-shadow: none ;
+  background: #efefef ;
+}
 
-    .btn-dark-custom {
-      background: #0f1b14;
-      border: none;
-      padding: 12px;
-      border-radius: 10px;
-      font-size: 17px;
-      color: #fff;
-    }
+.btn-dark-custom {
+  background: #0f1b14;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 17px;
+  color: #fff;
+}
 
