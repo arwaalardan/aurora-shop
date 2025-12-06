@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
   updateCartCount();
 
@@ -7,80 +6,85 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.addEventListener("click", () => {
       const card = btn.closest(".card");
       const name = card.querySelector(".card-title").textContent.trim();
-      const priceText = card.querySelector(".card-text").textContent.trim();
-      const price = parseFloat(priceText.replace("SR", "").trim());
-      const img = card.querySelector("img").getAttribute("src");
+      const price = parseFloat(card.querySelector(".card-text").textContent);
+      const img = card.querySelector("img").src;
 
-      addToCart(name, price, img); 
+      addToCart(name, price, img);
     });
   });
 });
 
+
 function addToCart(name, price, img) {
-  const existing = JSON.parse(localStorage.getItem("cart")) || [];
-  const found = existing.find(item => item.name === name);
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const found = cart.find(item => item.name === name);
 
   if (!found) {
-    existing.push({ name, price, img, quantity: 1 });
-    localStorage.setItem("cart", JSON.stringify(existing));
-    updateCartCount();
-    showAddedMessage(); 
+    cart.push({ name, price, img, quantity: 1 });
+    showAddedMessage();
   } else {
-    showAlreadyExists();
+    found.quantity += 1; 
+    showAddedMessage();
   }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
 }
 
+
+// تحديث رقم السله
 function updateCartCount() {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  document.getElementById("cart-count").textContent = cart.length;
+  let count = 0;
+
+  cart.forEach(item => {
+    count += item.quantity;
+  });
+
+  document.getElementById("cart-count").textContent = count;
 }
+
 
 function showAddedMessage() {
   const message = document.createElement("div");
-  message.textContent = "Item has been added";
+  message.textContent = "Item added to cart";
   message.className = "alert alert-success position-fixed top-0 start-50 translate-middle-x mt-3 shadow";
   message.style.zIndex = 9999;
   document.body.appendChild(message);
   setTimeout(() => message.remove(), 2000);
 }
 
-// cart 
+
+
 if (window.location.pathname.includes("cart.html")) {
 
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
   const tableBody = document.getElementById("cart-table-body");
   const totalElement = document.getElementById("total");
-  const countElement = document.getElementById("cart-count");
 
   let total = 0;
 
   cart.forEach((item, index) => {
-    const itemTotal = item.price * (item.quantity || 1);
+    const itemTotal = item.quantity * item.price;
+    total += itemTotal;
 
     const row = document.createElement("tr");
     row.innerHTML = `
-      <td>${item.name} <br><small class="text-muted">Quantity: ${item.quantity || 1}</small></td>
-      <td>${itemTotal.toFixed(2)} SR</td>
+      <td>${item.name}</td>
+      <td>${item.quantity}</td>
+      <td>${itemTotal} SR</td>
       <td><button class="btn btn-sm btn-outline-danger" onclick="removeItem(${index})">Delete</button></td>
     `;
 
     tableBody.appendChild(row);
-    total += itemTotal;
   });
 
-  totalElement.textContent = `${total.toFixed(2)} SR`;
-  countElement.textContent = cart.length;
+  totalElement.textContent = `${total} SR`;
 
-  window.removeItem = function (index) {
+  window.removeItem = function(index) {
     cart.splice(index, 1);
     localStorage.setItem("cart", JSON.stringify(cart));
     location.reload();
   };
-
 }
-
-
-
-
-
 
