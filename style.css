@@ -155,9 +155,6 @@ body {
   border-radius: 10px;
 }
 
-.login-input:focus {
-  box-shadow: none ;
-  background: #efefef ;
 }
 
 .btn-dark-custom {
@@ -168,4 +165,5 @@ body {
   font-size: 17px;
   color: #fff;
 }
+
 
