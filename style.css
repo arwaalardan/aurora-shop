@@ -26,13 +26,12 @@ body {
 }
 
 .btn-dark-custom {
-  background: #333333;
+  background: #0f1b14;
   color: white;
   border: none;
   padding: 12px;
   border-radius: 10px;
   font-size: 17px;
-  opacity: 1;
 }
 
 .btn-outline-dark {
@@ -92,7 +91,6 @@ body {
   border-radius: 50%;
 }
 
-
 .sidebar {
   position: fixed;
   top: 0;
@@ -140,7 +138,6 @@ body {
   cursor: pointer;
 }
 
-
 .login-card {
   background: white;
   padding: 35px;
@@ -149,21 +146,15 @@ body {
 }
 
 .login-input {
-  background: #f5f5f5 ;
-  border: none ;
+  background: #f5f5f5;
+  border: none;
   padding: 14px;
   border-radius: 10px;
 }
 
+.login-input:focus {
+  background: #efefef;
+  box-shadow: none;
+  outline: none;
 }
-
-.btn-dark-custom {
-  background: #0f1b14;
-  border: none;
-  padding: 12px;
-  border-radius: 10px;
-  font-size: 17px;
-  color: #fff;
-}
-
 
